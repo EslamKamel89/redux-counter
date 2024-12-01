@@ -1,32 +1,29 @@
-import { createStore } from "redux";
+/* eslint-disable no-unused-vars */
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+
 const initialState = { counter: 0, showCounter: true };
 
-const counterReducer = (state = initialState, action) => {
-  if (action.type == "increment" && action.amount) {
-    return {
-      ...state,
-      counter: state.counter + action.amount,
-    };
-  }
-  if (action.type === "increment") {
-    return {
-      ...state,
-      counter: state.counter + 1,
-    };
-  }
-  if (action.type === "decrement") {
-    return {
-      ...state,
-      counter: state.counter - 1,
-    };
-  }
-  if (action.type === "toggle") {
-    return {
-      ...state,
-      showCounter: !state.showCounter,
-    };
-  }
-  return state;
-};
-const store = createStore(counterReducer);
+const counterSlice = createSlice({
+  name: "counter",
+  initialState,
+  reducers: {
+    increment(state) {
+      state.counter++;
+    },
+    decrement(state) {
+      state.counter--;
+    },
+    increase(state, action) {
+      state.counter = state.counter + action.payload.amount;
+    },
+    toggleCounter(state) {
+      state.showCounter = !state.showCounter;
+    },
+  },
+});
+export const counterActions = counterSlice.actions;
+
+const store = configureStore({
+  reducer: counterSlice.reducer,
+});
 export default store;
