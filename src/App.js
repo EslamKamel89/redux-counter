@@ -1,10 +1,8 @@
-import Counter from './components/Counter';
-
+/* eslint-disable react/react-in-jsx-scope */
+import Counter from "./components/Counter";
 
 function App() {
-  return (
-    <Counter />
-  );
+  return <Counter />;
 }
 
 export default App;
