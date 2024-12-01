@@ -1,4 +1,5 @@
-import classes from './UserProfile.module.css';
+/* eslint-disable react/react-in-jsx-scope */
+import classes from "./UserProfile.module.css";
 
 const UserProfile = () => {
   return (
